@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body%}
+<div class="container">
+    <h2>Computer</h2>
+
+    <table class="table table-bordered table-condensed">
+        <tr>
+            <th>Computer Name</th>
+            <th>Serial Number</th>
+            <th>User Name</th>
+            <th>Full Name</th>
+            <th>Model</th>
+        </tr>
+        {% for item in object_list %}
+        <tr>
+        <td>{{item.computer_name}}</td>
+        <td>{{item.serial_number}}</td>
+        <td>{{item.user_name}}</td>
+        <td>{{item.person_full_name}}</td>
+        <td>{{item.model_number}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock %}

@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from search_views.search import SearchListView
+from search_views.filters import  BaseFilter
+from django.views.generic import TemplateView,ListView
+from django.db.models import Q
 # Create your views here.
 def index(request):
     return  render(request, 'index.html')
@@ -26,3 +30,14 @@ def add_computer(request):
         form = ComputersForms()
         return render(request, 'add_new.html', {'form' : form})
 
+
+
+
+class SearchResults(ListView):
+    model = Computer
+    template_name = 'computer_list.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return Computer.objects.filter(Q(computer_name__icontains=query) |
+                                       Q(serial_number__icontains=query) | Q(user_name__icontains=query) | Q(person_full_name__icontains=query))
