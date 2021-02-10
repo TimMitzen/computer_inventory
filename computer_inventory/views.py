@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
-from search_views.search import SearchListView
-from search_views.filters import  BaseFilter
-from django.views.generic import TemplateView,ListView
+from django.views.generic import ListView
 from django.db.models import Q
 # Create your views here.
 def index(request):
