@@ -276,6 +276,7 @@ svg {
 table {
   caption-side: bottom;
   border-collapse: collapse;
+  color:white;
 }
 
 caption {
@@ -288,6 +289,7 @@ caption {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+  color: white;
 }
 
 thead,
@@ -299,6 +301,7 @@ th {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
+
 }
 
 label {

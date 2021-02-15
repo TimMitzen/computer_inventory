@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
+
 
 
 <title>
     Inventory
 </title>
-</head>
+
+<body class="d-flex h-100 text-center text-white bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
 {% load static %}
 <link rel="stylesheet"  type="text/css" href="{% static '/css/style.css' %}"/>
 <link rel="stylesheet"  type="text/css" href="{% static '/css/bootstrap.min.css' %}"/>
@@ -26,13 +30,28 @@
           <li class="nav-item">
             <a class="nav-link" href="https://surgeryis.github.io/website/">Surgery Website</a>
           </li>
+        </ul>
 
           <form action="{% url 'Search Results' %}" method="get">
               <input name="q" type="text" placeholder="Search">
 
         <button class="btn" type="submit">Search</button>
+
+          </form>
         </fieldset>
 
+
+
+  <footer class="mt-auto text-white-50">
+
+  </footer>
+</div>
+
+
+
+
+
+</body>
 
         </form>
         </ul>
