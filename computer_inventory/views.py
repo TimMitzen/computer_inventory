@@ -10,14 +10,15 @@ def index(request):
 
 def display_computers(request):
     items = Computer.objects.all()#graps all the models in models
-    computer_paginator = Paginator(items, 10)
 
-    page_num = request.GET.get('page')
-    page = computer_paginator.get_page(page_num)
+    paginator = Paginator(items, 30)
+    page = request.GET.get('page')
+    items = paginator.get_page(page)
+
     context = {
         'items' : items,
         'header' :  "Computers",
-        'page': page,
+
 
 
 
@@ -35,7 +36,12 @@ def add_computer(request):
         form = ComputersForms()
         return render(request, 'add_new.html', {'form' : form})
 
-
+def page_list(request):
+    computer_list = Computer.objects.all()
+    paginator = Paginator(computer_list, 30)
+    page = request.GET.get('page')
+    computer_list = paginator.get_page(page)
+    return  render(request, 'index.html', {'computer_list': computer_list})
 
 class SearchResults(ListView):
     model = Computer
