@@ -35,8 +35,20 @@
         <td>{{item.location}}</td>
         <td>{{item.model_number}}</td>
         <td>{{item.comments}}</td>
+
     </tr>
+
     {% endfor %}
     </tbody>
+{#    <div class="page-links">#}
+{#        {% if page.has_previous %}#}
+{#        <a href="{% url 'display_computers' %}?page={{ page.previous_page_number }}">Previous Page</a>#}
+{#        {% endif %}#}
+{#        {% if page.has_next %}#}
+{#        <a href="{% url 'display_computers' %}?page={{ page.next_page_number }}">Next Page</a>#}
+{#        {% endif %}#}
+{#    </div>#}
 </table>
+
+
 {% endblock %}

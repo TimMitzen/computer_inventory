@@ -3,15 +3,22 @@ from .models import *
 from .forms import *
 from django.views.generic import ListView
 from django.db.models import Q
+from django.core.paginator import Paginator
 # Create your views here.
 def index(request):
     return  render(request, 'index.html')
 
 def display_computers(request):
     items = Computer.objects.all()#graps all the models in models
+    computer_paginator = Paginator(items, 10)
+
+    page_num = request.GET.get('page')
+    page = computer_paginator.get_page(page_num)
     context = {
         'items' : items,
-        'header' :  "Computers"
+        'header' :  "Computers",
+        'page': page,
+
 
 
     }
@@ -27,7 +34,6 @@ def add_computer(request):
     else:
         form = ComputersForms()
         return render(request, 'add_new.html', {'form' : form})
-
 
 
 
