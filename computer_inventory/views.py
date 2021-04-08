@@ -11,7 +11,7 @@ def index(request):
 def display_computers(request):
     items = Computer.objects.all()#graps all the models in models
 
-    paginator = Paginator(items, 30)
+    paginator = Paginator(items, 13)
     page = request.GET.get('page')
     items = paginator.get_page(page)
 
