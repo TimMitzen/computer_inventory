@@ -50,4 +50,4 @@ class SearchResults(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         return Computer.objects.filter(Q(computer_name__icontains=query) |
-                                       Q(serial_number__icontains=query) | Q(user_name__icontains=query) | Q(person_full_name__icontains=query))
+                                       Q(serial_number__icontains=query) | Q(user_name__icontains=query) | Q(person_full_name__icontains=query) |Q(location__icontains=query))
