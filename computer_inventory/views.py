@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import *
+from .models import Computer
 from .forms import *
 from django.views.generic import ListView
 from django.db.models import Q
@@ -36,18 +36,25 @@ def add_computer(request):
         form = ComputersForms()
         return render(request, 'add_new.html', {'form' : form})
 
-def page_list(request):
-    computer_list = Computer.objects.all()
-    paginator = Paginator(computer_list, 30)
-    page = request.GET.get('page')
-    computer_list = paginator.get_page(page)
-    return  render(request, 'index.html', {'computer_list': computer_list})
+# def page_list(request):
+#     computer_list = Computer.objects.all()
+#     paginator = Paginator(computer_list, 30)
+#     page = request.GET.get('page')
+#     computer_list = paginator.get_page(page)
+#     return  render(request, 'index.html',  {'computer_list': computer_list})
 
 class SearchResults(ListView):
+    paginate_by = 13
     model = Computer
     template_name = 'computer_list.html'
+
 
     def get_queryset(self):
         query = self.request.GET.get('q')
         return Computer.objects.filter(Q(computer_name__icontains=query) |
-                                       Q(serial_number__icontains=query) | Q(user_name__icontains=query) | Q(person_full_name__icontains=query) |Q(location__icontains=query))
+                                       Q(serial_number__icontains=query) | Q(user_name__icontains=query) |
+                                       Q(person_full_name__icontains=query) |Q(location__icontains=query)|
+                                       Q(operating_system__icontains=query))
+
+
+
