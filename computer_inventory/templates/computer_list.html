@@ -32,7 +32,7 @@
  </tr>
 </tbody>
     {% endfor %}
-    {{ object_list.number}}
+
 <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
@@ -41,7 +41,7 @@
         {% endif %}
 
         <span class="current">
-            Page {{ page.number }} of {{ page_obj.paginator.num_pages }}
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
         </span>
 
         {% if page_obj.has_next %}
