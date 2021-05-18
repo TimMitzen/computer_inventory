@@ -44,9 +44,10 @@ def add_computer(request):
 #     return  render(request, 'index.html',  {'computer_list': computer_list})
 
 class SearchResults(ListView):
-    paginate_by = 13
+    paginate_by = 200
     model = Computer
     template_name = 'computer_list.html'
+
 
 
     def get_queryset(self):
