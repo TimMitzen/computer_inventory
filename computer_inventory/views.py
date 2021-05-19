@@ -44,7 +44,7 @@ def add_computer(request):
 #     return  render(request, 'index.html',  {'computer_list': computer_list})
 
 class SearchResults(ListView):
-    paginate_by = 200
+    paginate_by = 13
     model = Computer
     template_name = 'computer_list.html'
 
@@ -57,5 +57,8 @@ class SearchResults(ListView):
                                        Q(person_full_name__icontains=query) |Q(location__icontains=query)|
                                        Q(operating_system__contains=query))
 
-
+    def get_context_data(self,  **kwargs):
+        context = super(SearchResults, self).get_context_data(**kwargs)
+        context['q'] = self.request.GET.get('q','')
+        return context
 
