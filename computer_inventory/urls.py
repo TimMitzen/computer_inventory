@@ -7,6 +7,6 @@ urlpatterns =[
 
     url(r"add_computer", add_computer, name="add_computer"),
     path('search/', SearchResults.as_view(),name = 'Search Results'),
-    url('r^index', index, name ='index')
+    url(r'^index', index, name ='index')
 
 ]
